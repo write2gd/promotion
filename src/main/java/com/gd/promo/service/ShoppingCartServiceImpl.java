@@ -10,5 +10,9 @@ import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
-   
+
+    @Override
+    public void addItemToStock(Item item) {
+
+    }
 }
