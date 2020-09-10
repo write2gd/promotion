@@ -31,33 +31,52 @@ class PromotionApplicationTests {
 
     @Test
     public void calculateTotalOrderValue() {
-        double scenarioAValue = OrderAndGetScenarioA();
+        double scenarioAValue = OrderAndGetScenarioA("sessionA");
         assertEquals(scenarioAValue, 100.0);
-        double scenarioBValue = OrderAndGetScenarioB();
+        double scenarioBValue = OrderAndGetScenarioB("sessionB");
         assertEquals(scenarioBValue, 420.0);
-        double scenarioCValue = OrderAndGetScenarioC();
+        double scenarioCValue = OrderAndGetScenarioC("sessionC");
         assertEquals(scenarioCValue, 335.0);
     }
 
     @Test
     public void calculateTotalOrderValueAfterPromotion() {
-        double scenarioAValue = OrderAndGetScenarioA();
+        double scenarioAValue = OrderAndGetAfterPromotionScenarioA("promotional_sessionA");
         assertEquals(scenarioAValue, 100.0);
-        double scenarioBValue = OrderAndGetScenarioB();
+        double scenarioBValue = OrderAndGetAfterPromotionScenarioB("promotional_sessionB");
         assertEquals(scenarioBValue, 370.0);
-        double scenarioCValue = OrderAndGetScenarioC();
+        double scenarioCValue = OrderAndGetAfterPromotionScenarioC("promotional_sessionC");
         assertEquals(scenarioCValue, 280.0);
     }
 
-    private double OrderAndGetScenarioA() {
+    private double OrderAndGetAfterPromotionScenarioC(String sessionId) {
         return 0;
     }
 
-    private double OrderAndGetScenarioC() {
+    private double OrderAndGetAfterPromotionScenarioB(String sessionId) {
         return 0;
     }
 
-    private double OrderAndGetScenarioB() {
+    private double OrderAndGetAfterPromotionScenarioA(String sessionId) {
+        return 0;
+    }
+
+    private double OrderAndGetScenarioA(String sessionId) {
+        Item A = cartService.getItem("A");
+        cartService.orderItem(sessionId, A, 1);
+        Item B = cartService.getItem("B");
+        cartService.orderItem(sessionId, B, 1);
+        Item C = cartService.getItem("C");
+        cartService.orderItem(sessionId, C, 1);
+
+        return cartService.calculateTotal(sessionId);
+    }
+
+    private double OrderAndGetScenarioC(String sessionId) {
+        return 0;
+    }
+
+    private double OrderAndGetScenarioB(String sessionId) {
         return 0;
     }
 
