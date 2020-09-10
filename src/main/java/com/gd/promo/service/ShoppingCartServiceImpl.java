@@ -23,7 +23,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public Item getItem(String skuId) {
-        return null;
+        return stocks.get(skuId);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public double calculateTotal(String sessionId) {
-        return 0;
+        return cart.get(sessionId).stream().mapToDouble(item -> item.getQuantity() * item.getItem().getPrice()).sum();
     }
 
 

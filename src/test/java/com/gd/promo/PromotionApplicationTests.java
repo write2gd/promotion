@@ -5,8 +5,10 @@ import com.gd.promo.model.Item;
 import com.gd.promo.service.ShoppingCartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class PromotionApplicationTests {
-    @MockBean
+    @Autowired
     private ShoppingCartService cartService;
 
     @BeforeEach
@@ -32,11 +34,11 @@ class PromotionApplicationTests {
     @Test
     public void calculateTotalOrderValue() {
         double scenarioAValue = OrderAndGetScenarioA("sessionA");
-        assertEquals(scenarioAValue, 100.0);
+        assertEquals(100.0, scenarioAValue);
         double scenarioBValue = OrderAndGetScenarioB("sessionB");
-        assertEquals(scenarioBValue, 420.0);
+        assertEquals(420.0, scenarioBValue);
         double scenarioCValue = OrderAndGetScenarioC("sessionC");
-        assertEquals(scenarioCValue, 335.0);
+        assertEquals(335.0, scenarioCValue);
     }
 
     @Test
