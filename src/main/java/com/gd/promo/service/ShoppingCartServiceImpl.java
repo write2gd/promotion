@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private static final Map<String, Item> stocks = new HashMap<>();
-    private static final Map<String, CartItem> cart = new HashMap<>();
+    private static final Map<String, List<CartItem>> cart = new HashMap<>();
 
     @Override
     public void addItemToStock(Item item) {
@@ -28,6 +28,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void orderItem(String sessionId, Item item, int quantity) {
+        CartItem cartItem = new CartItem();
+        cartItem.setItem(item);
+        cartItem.setQuantity(quantity);
+        cart.putIfAbsent(sessionId, new ArrayList<>());
+        cart.get(sessionId).add(cartItem);
 
     }
 

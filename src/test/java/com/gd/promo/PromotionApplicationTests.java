@@ -73,11 +73,26 @@ class PromotionApplicationTests {
     }
 
     private double OrderAndGetScenarioC(String sessionId) {
-        return 0;
+        Item A = cartService.getItem("A");
+        cartService.orderItem(sessionId, A, 3);
+        Item B = cartService.getItem("B");
+        cartService.orderItem(sessionId, B, 5);
+        Item C = cartService.getItem("C");
+        cartService.orderItem(sessionId, C, 1);
+        Item D = cartService.getItem("D");
+        cartService.orderItem(sessionId, D, 1);
+        return cartService.calculateTotal(sessionId);
     }
 
     private double OrderAndGetScenarioB(String sessionId) {
-        return 0;
+        Item A = cartService.getItem("A");
+        cartService.orderItem(sessionId, A, 5);
+        Item B = cartService.getItem("B");
+        cartService.orderItem(sessionId, B, 5);
+        Item C = cartService.getItem("C");
+        cartService.orderItem(sessionId, C, 1);
+
+        return cartService.calculateTotal(sessionId);
     }
 
 
