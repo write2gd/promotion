@@ -7,6 +7,7 @@ public class Item {
     private String name;
     private double price;
     private Long promotionId;
+    private boolean promotionApplied;
 
     public String getSkuId() {
         return skuId;
@@ -38,5 +39,13 @@ public class Item {
 
     public void setPromotionId(Long promotionId) {
         this.promotionId = promotionId;
+    }
+
+    public boolean isPromotionApplied() {
+        return promotionApplied;
+    }
+
+    public void setPromotionApplied(boolean promotionApplied) {
+        this.promotionApplied = promotionApplied;
     }
 }

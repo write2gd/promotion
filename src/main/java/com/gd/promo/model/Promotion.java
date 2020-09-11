@@ -1,9 +1,12 @@
 package com.gd.promo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Promotion {
     private Long promotionId;
     private String name;
-    private String rule;
+    private List<String> rules = new ArrayList<>();
     private PromotionState status;
 
     public Long getPromotionId() {
@@ -22,12 +25,8 @@ public class Promotion {
         this.name = name;
     }
 
-    public String getRule() {
-        return rule;
-    }
-
-    public void setRule(String rule) {
-        this.rule = rule;
+    public List<String> getRules() {
+        return rules;
     }
 
     public PromotionState getStatus() {

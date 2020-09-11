@@ -12,4 +12,6 @@ public interface ShoppingCartService {
     void orderItem(String sessionId, Item item, int quantity);
 
     double calculateTotal(String sessionId);
+
+    double checkOut(String sessionId);
 }
